@@ -1,0 +1,33 @@
+import express from "express";
+import MoviesDB from "./config/database";
+import movieRouter from "./routes/Movie-route";
+import router from "./routes/user-routes.js";
+
+const app=express();
+app.use(express.json())
+app.use("/api/user",router)
+app.use("/api/movie",movieRouter)
+
+MoviesDB()
+
+
+const port =4000;
+
+// for showing data in termial
+app.use(function(req,res,next){
+    console.log(`${req.method}-${req.url}-${req.ip}-${new Date()}`)
+    next()
+})
+
+
+
+
+app.listen(port,()=>{
+    console.log("this server is running on port 4000");
+})
+
+
+
+
+
+// !XBpN-.YymngL8h

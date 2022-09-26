@@ -1,0 +1,29 @@
+{
+  "name": "movieapp",
+  "version": "1.0.0",
+  "description": "i created movieapp",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AakashSoni1997/MoviesApp-IMDB_CLONE-.git"
+  },
+  "keywords": [
+    "movieapp"
+  ],
+  "author": "aakash soni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AakashSoni1997/MoviesApp-IMDB_CLONE-/issues"
+  },
+  "homepage": "https://github.com/AakashSoni1997/MoviesApp-IMDB_CLONE-#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
+  }
+}
