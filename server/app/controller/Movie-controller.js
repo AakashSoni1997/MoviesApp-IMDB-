@@ -5,7 +5,7 @@ import User from "../model/User";
 export const getAllMovie = async (req, res, next) => {
   let movies;
   try {
-    movies = await Movie.find();
+    movies = await Movie.find().populate("user");
   } catch (error) {
     console.log(error);
   }
