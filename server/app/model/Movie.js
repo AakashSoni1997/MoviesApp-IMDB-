@@ -21,7 +21,8 @@ const movieSchema = new Schema({
     required: true,
   },
   user:{
-    type: String,
+    type: mongoose.Types.ObjectId,
+    ref:"Movie",
     required:true
   }
 });
@@ -33,3 +34,4 @@ export default mongoose.model("Movie",movieSchema)
 
 // https://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@github.com/AakashSoni1997/MoviesApp-IMDB_CLONE-.git 
 // https://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@github.com/AakashSoni1997/MoviesApp-IMDB_CLONE-.git
+// https://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@github.com/AakashSoni1997/MoviesApp-IMDB-.git

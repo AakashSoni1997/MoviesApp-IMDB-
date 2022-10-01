@@ -2,8 +2,10 @@ import express from "express";
 import MoviesDB from "./config/database";
 import movieRouter from "./routes/Movie-route";
 import router from "./routes/user-routes.js";
+import cors from "cors"
 
 const app=express();
+app.use(cors())
 app.use(express.json())
 app.use("/api/user",router)
 app.use("/api/movie",movieRouter)

@@ -33,6 +33,7 @@ export const signup = async (req, res, next) => {
         name, 
         email, 
         password:hashedpassword,
+        movies:[]
     });
   try {
     await user.save();
