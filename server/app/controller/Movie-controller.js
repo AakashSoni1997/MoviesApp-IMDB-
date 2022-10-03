@@ -104,5 +104,5 @@ export const getUserById= async (req,res,next)=>{
   if(!userMovies){
     return res.status(404).json({message:"no movies found"})
   }
-  return res.status(200).json({movies:userMovies})
+  return res.status(200).json({user : userMovies})
 }

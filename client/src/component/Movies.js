@@ -16,16 +16,16 @@ const Movies = () => {
   useEffect(() => {
     sendRequest().then((data) => setMovies(data.movies));
   }, []);
-
   return (
     <Box>
       {movies &&
         movies.map((movie) => (
           <MovieCard
-          key={movie._id}
+          isUser={localStorage.getItem("userId")===movie?.user?._id}
+           key={movie._id}
             title={movie?.title}
             description={movie?.description}
-            imageURL={movie?.imageURL}
+            image={movie?.image}
             userName={movie?.user?.name}
           />
         ))}

@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store";
 
 const Header = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const [value, setValue] = useState();
 
@@ -22,7 +22,7 @@ const Header = () => {
       position="sticky"
       sx={{
         background:
-          " linear-gradient(90deg, rgba(14,45,121,1) 34%, rgba(7,6,55,1) 100%)",
+          "linear-gradient(90deg, rgba(14,45,121,1) 34%, rgba(7,6,55,1) 100%)",
       }}
     >
       <Toolbar>
@@ -32,10 +32,11 @@ const Header = () => {
             <Tabs
               textColor="inherit"
               value={value}
-              onChange={(e, val) => setValue(val)}
+              onChange={(val) => setValue(val)}
             >
               <Tab LinkComponent={Link} to="/movies" label="All Movies" />
               <Tab LinkComponent={Link} to="/myMovies" label="My Movies" />
+              <Tab LinkComponent={Link} to="/movies/add" label="add Movie" />
             </Tabs>
           </Box>
         )}

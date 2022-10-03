@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router";
 
 const MovieDetail = () => {
+  const id=useParams().id
+  console.log(id)
+  useEffect(() => {
+   
+  }, [])
+  
   return (
     <div>
       <h2>MovieDetail</h2>
@@ -8,4 +15,4 @@ const MovieDetail = () => {
   );
 };
 
-export default MovieDetail;
+export default MovieDetail; 
