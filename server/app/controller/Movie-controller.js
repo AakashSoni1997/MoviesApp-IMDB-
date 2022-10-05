@@ -49,11 +49,11 @@ export const addMovie = async (req, res, next) => {
 };
 
 export const updateMovie = async (req, res, next) => {
-  const { title, description } = req.body;
+  const { title, description,rating } = req.body;
   const movieId = req.params.id;
   let movie;
   try {
-    movie = await Movie.findByIdAndUpdate(movieId, { title, description });
+    movie = await Movie.findByIdAndUpdate(movieId, { title, description,rating });
   } catch (err) {
     return console.log(err);
   }

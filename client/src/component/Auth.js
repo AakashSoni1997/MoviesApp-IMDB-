@@ -25,17 +25,16 @@ const Auth = () => {
   };
 
   const sendRequest = async (type = "login") => {
-    const res = await axios
-      .post(`http://localhost:4000/api/user/${type}`, {
+    const res = await axios.post(`http://localhost:4000/api/user/${type}`, {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,
       })
       .catch((err) => console.log(err));
 
-    const data = await res.data;
-    console.log(data)
-    return data;
+   const data= await res.data
+   console.log(data)
+   return data
   };
 
   const handleSubmit = (e) => {

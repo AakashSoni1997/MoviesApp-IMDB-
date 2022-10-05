@@ -23,10 +23,10 @@ console.log(isLoggedIn);
       <main>
           <Routes>
               <Route path="/auth" element={<Auth/>} />
+              <Route path="/movies/add" element={<AddMovie/>}/>
               <Route path="/movies" element={<Movies/>}/>
               <Route path="/mymovies" element={<UserMovie/>}/>
               <Route path="/mymovies/:id" element={<MovieDetail/>}/>
-              <Route path="/movies/add" element={<AddMovie/>}/>
           </Routes>
 
 

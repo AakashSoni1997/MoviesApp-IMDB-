@@ -22,22 +22,21 @@ const UserMovie = () => {
      setUser(data.user)
     });
   },[]);
-  console.log(user);
+  console.log(user && user.movies,"email");
 
   return (
     <div>
-      {' '}
-      {user && user.movies &&
-        user. movies.map((movie) => (
-          <MovieCard
-            key={movie._id}
-             isUser={true}
-            title={movie.title}
-            description={movie.description}
-            image={movie.image}
-            userName={user.name}
-          />
-        ))}
+      {user && user.movies.map((movie)=>{
+        return <MovieCard
+        key={movie._id}
+        id={movie._id}
+         isUser={true}
+        title={movie.title}
+        description={movie.description}
+        image={movie.image}
+        userName={user.name}
+      />
+      })}    
     </div>
   );
 };

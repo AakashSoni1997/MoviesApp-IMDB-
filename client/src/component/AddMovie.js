@@ -1,7 +1,7 @@
 import { Button, InputLabel, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import  axios from "axios"
+import axios from "axios";
 
 const labelStyle = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 const AddMovie = () => {
@@ -18,27 +18,25 @@ const AddMovie = () => {
     }));
   };
 
-const sendRequest= async ()=>{
-  const res= await axios.post("http://localhost:4000/api/movie/add",{
-  title:inputs.title,
-  rating:inputs.rating,
-  description:inputs.description,
-  image:inputs.imageURL,
-  user:localStorage.getItem("userId")
-  }) 
-  .catch(err=>console.log(err))
-  const data= await res.data
-  return data
-}
-
-
+  const sendRequest = async () => {
+    const res = await axios
+      .post("http://localhost:4000/api/movie/add", {
+        title: inputs.title,
+        rating: inputs.rating,
+        description: inputs.description,
+        image: inputs.imageURL,
+        user: localStorage.getItem("userId"),
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
-    sendRequest().then(data=>console.log(data))
+    sendRequest().then((data) => console.log(data));
   };
-
+ 
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -95,7 +93,14 @@ const sendRequest= async ()=>{
             margin="normal"
             variant="outlined"
           />
-          <Button sx={{mt:2,borderRadius:4}} variant="contained" color="primary" type="submit">Submit </Button>
+          <Button
+            sx={{ mt: 2, borderRadius: 4 }}
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
+            Submit{" "}
+          </Button>
         </Box>
       </form>
     </div>

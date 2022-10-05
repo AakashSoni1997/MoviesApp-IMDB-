@@ -9,9 +9,11 @@ const Movies = () => {
     const res = await axios
       .get("http://localhost:4000/api/movie")
       .catch((err) => console.log(err));
-    const data = res.data;
+    const data =await res.data;
+    console.log(res.data)
     return data;
   };
+  console.log(movies,"movies")
 
   useEffect(() => {
     sendRequest().then((data) => setMovies(data.movies));
@@ -20,9 +22,10 @@ const Movies = () => {
     <Box>
       {movies &&
         movies.map((movie) => (
+          
           <MovieCard
+          id={movie._id}
           isUser={localStorage.getItem("userId")===movie?.user?._id}
-           key={movie._id}
             title={movie?.title}
             description={movie?.description}
             image={movie?.image}

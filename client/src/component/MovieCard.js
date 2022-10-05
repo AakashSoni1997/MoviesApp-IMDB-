@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,37 +8,63 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import { Box } from "@mui/system";
 import { IconButton } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import {useNavigate} from "react-router-dom"
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export default function MovieCard({title,description,image,userName,isUser,key}) {
-  const navigate=useNavigate()
-   
-  const handleEdit=()=>{
-    navigate(`/mymovies/${key}`)
-  }
+const  MovieCard =({
+  title,
+  description,
+  image,
+  userName,
+  isUser,
+  id,
+})=>
+{
+  const navigate = useNavigate();
+  console.log(id,"id")
 
-const handleDelete=()=>{
+  const handleEdit = () => {
+    navigate(`/mymovies/${id}`);
+  };
 
-}
+  const deleteRequest = async () => {
+    const res = await axios
+      .delete(`http://localhost:4000/api/movie/${id}`)
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  };
+
+  const handleDelete = () => {
+    deleteRequest()
+      .then(() => navigate("/"))
+      .then(() => navigate("/movies"));
+  };
 
   return (
-    <Card 
+    <>
+    <Card
       sx={{
         width: "40%",
         margin: "auto",
         padding: 2,
-        boxShadow: "5px 5px 10px #ccc", 
+        boxShadow: "5px 5px 10px #ccc",
         ":hover": {
           boxShadow: "10px 10px 20px #ccc",
         },
-      }} 
+      }}
     >
       {isUser && (
-        <Box display ="flex">
-          <IconButton onClick={handleEdit} sx={{marginLeft:"auto"}}><EditIcon/> </IconButton>
-          <IconButton  onClick={handleDelete}> <DeleteOutlineIcon/></IconButton>
+        <Box display="flex">
+          <IconButton onClick={handleEdit} sx={{ marginLeft: "auto" }}>
+            <EditIcon />{" "}
+          </IconButton>
+          <IconButton onClick={handleDelete}>
+            {" "}
+            <DeleteOutlineIcon />
+          </IconButton>
         </Box>
       )}
       <CardHeader
@@ -49,16 +75,16 @@ const handleDelete=()=>{
         }
         title={title}
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image={image}
-      />
+      <CardMedia component="img" height="194" image={image} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-        <b>{userName}</b> {"-> "} {description}
+          <b>{userName}</b> {"-> "} {description}
         </Typography>
       </CardContent>
     </Card>
+    </>
   );
 }
+
+
+export default MovieCard
