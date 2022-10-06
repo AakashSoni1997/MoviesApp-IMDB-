@@ -2,14 +2,15 @@ import { Button, InputLabel, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 // import { useParams } from "react-router";
 
 const labelStyle = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 
 const MovieDetail = () => {
-  const {id}=useParams();
-  console.log(id,"idddddddddddddddd");
+  const navigate = useNavigate();
+  const { id } = useParams();
+  console.log(id, "moviessssssiddddddddd");
   const [movie, setMovies] = useState();
 
   const [inputs, setInputs] = useState();
@@ -40,9 +41,24 @@ const MovieDetail = () => {
     });
   }, [id]);
 
+  const sendRequest = async () => {
+    const res = await axios
+      .put(`http://localhost:5000/api/movie/update/${id}`, {
+        title: inputs.title,
+        description: inputs.description,
+        rating: inputs.rating,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
+    sendRequest()
+      .then((data) => console.log(data))
+      .then(() => navigate("/mymovies"));
   };
 
   return (
@@ -91,14 +107,6 @@ const MovieDetail = () => {
               name="description"
               onChange={handleChange}
               value={inputs.description}
-              margin="normal"
-              variant="outlined"
-            />
-            <InputLabel sx={labelStyle}>ImageURL</InputLabel>
-            <TextField
-              name="imageURL"
-              onChange={handleChange}
-              value={inputs.imageURL}
               margin="normal"
               variant="outlined"
             />

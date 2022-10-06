@@ -2,9 +2,13 @@ import { Button, InputLabel, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
+import { useStyles } from "./utils";
 
 const labelStyle = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 const AddMovie = () => {
+  const classes = useStyles()
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     title: "",
     description: "",
@@ -20,7 +24,7 @@ const AddMovie = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .post("http://localhost:4000/api/movie/add", {
+      .post("http://localhost:5000/api/movie/add", {
         title: inputs.title,
         rating: inputs.rating,
         description: inputs.description,
@@ -34,9 +38,10 @@ const AddMovie = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest().then((data) => console.log(data));
+    sendRequest().then((data) => console.log(data))
+    .then(()=>navigate("/movies"))
   };
- 
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -53,6 +58,7 @@ const AddMovie = () => {
           width={"70%"}
         >
           <Typography
+          className={classes.font}
             fontWeight={"bold"}
             padding={3}
             color="grey"
@@ -61,32 +67,32 @@ const AddMovie = () => {
           >
             Post Your Movie
           </Typography>
-          <InputLabel sx={labelStyle}> Movie Title</InputLabel>
-          <TextField
+          <InputLabel className={classes.font} sx={labelStyle}> Movie Title</InputLabel>
+          <TextField  className={classes.font}
             name="title"
             onChange={handleChange}
             value={inputs.title}
             margin="normal"
             variant="outlined"
           />
-          <InputLabel sx={labelStyle}>Rating</InputLabel>
-          <TextField
+          <InputLabel  className={classes.font} sx={labelStyle}>Rating</InputLabel>
+          <TextField  className={classes.font}
             name="rating"
             onChange={handleChange}
             value={inputs.rating}
             margin="normal"
             variant="outlined"
           />
-          <InputLabel sx={labelStyle}>Description</InputLabel>
-          <TextField
+          <InputLabel  className={classes.font} sx={labelStyle}>Description</InputLabel>
+          <TextField  className={classes.font}
             name="description"
             onChange={handleChange}
             value={inputs.description}
             margin="normal"
             variant="outlined"
           />
-          <InputLabel sx={labelStyle}>ImageURL</InputLabel>
-          <TextField
+          <InputLabel  className={classes.font} sx={labelStyle}>ImageURL</InputLabel>
+          <TextField  className={classes.font}
             name="imageURL"
             onChange={handleChange}
             value={inputs.imageURL}

@@ -31,15 +31,15 @@ const  MovieCard =({
 
   const deleteRequest = async () => {
     const res = await axios
-      .delete(`http://localhost:4000/api/movie/${id}`)
-      .catch((err) => console.log(err));
+      .delete(`http://localhost:5000/api/movie/${id}`)
+      .catch((err) => console.log(err)); 
     const data = await res.data;
     return data;
   };
 
   const handleDelete = () => {
     deleteRequest()
-      .then(() => navigate("/"))
+      .then(() => navigate("/"))  
       .then(() => navigate("/movies"));
   };
 
@@ -59,11 +59,10 @@ const  MovieCard =({
       {isUser && (
         <Box display="flex">
           <IconButton onClick={handleEdit} sx={{ marginLeft: "auto" }}>
-            <EditIcon />{" "}
+            <EditIcon  color="warning"/>
           </IconButton>
           <IconButton onClick={handleDelete}>
-            {" "}
-            <DeleteOutlineIcon />
+            <DeleteOutlineIcon  color="error"/>
           </IconButton>
         </Box>
       )}
@@ -77,6 +76,8 @@ const  MovieCard =({
       />
       <CardMedia component="img" height="194" image={image} />
       <CardContent>
+        <hr />
+        <br />
         <Typography variant="body2" color="text.secondary">
           <b>{userName}</b> {"-> "} {description}
         </Typography>

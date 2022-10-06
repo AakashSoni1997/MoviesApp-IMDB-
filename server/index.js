@@ -12,7 +12,7 @@ app.use("/api/movie", movieRouter);
 
 MoviesDB();
 
-const port = 4000;
+const port = 5000;
 
 // for showing data in termial
 app.use(function (req, res, next) {
@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 });
 
 app.listen(port, () => {
-  console.log("this server is running on port 4000");
+  console.log("this server is running on port 5000");
 });
 
 // !XBpN-.YymngL8h

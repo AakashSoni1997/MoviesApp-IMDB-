@@ -26,7 +26,7 @@ const Header = () => {
       }}
     >
       <Toolbar>
-        <Typography variant="h4">MovieApp</Typography>
+        <Typography  variant="h4">MovieApp</Typography>
         {isLoggedIn && (
           <Box display={"flex"} marginLeft="auto" marginRight="auto">
             <Tabs
@@ -34,9 +34,9 @@ const Header = () => {
               value={value}
               onChange={(val) => setValue(val)}
             >
-              <Tab LinkComponent={Link} to="/movies" label="All Movies" />
-              <Tab LinkComponent={Link} to="/myMovies" label="My Movies" />
-              <Tab LinkComponent={Link} to="/movies/add" label="add Movie" />
+              <Tab  LinkComponent={Link} to="/movies" label="All Movies" />
+              <Tab  LinkComponent={Link} to="/myMovies" label="My Movies" />
+              <Tab  LinkComponent={Link} to="/movies/add" label="add Movie" />
             </Tabs>
           </Box>
         )}
