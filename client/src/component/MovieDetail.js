@@ -23,7 +23,7 @@ const MovieDetail = () => {
 
   const fetchDetails = async () => {
     const res = await axios
-      .get(`http://localhost:4000/api/movie/${id}`)
+      .get(`https://server-pi-blush.vercel.app/api/movie/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     console.log(data);
@@ -43,7 +43,7 @@ const MovieDetail = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .put(`http://localhost:5000/api/movie/update/${id}`, {
+      .put(`https://server-pi-blush.vercel.app/api/movie/update/${id}`, {
         title: inputs.title,
         description: inputs.description,
         rating: inputs.rating,

@@ -3,11 +3,9 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { useStyles } from "./utils";
 
 const labelStyle = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 const AddMovie = () => {
-  const classes = useStyles()
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     title: "",
@@ -24,7 +22,7 @@ const AddMovie = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .post("http://localhost:5000/api/movie/add", {
+      .post("https://server-pi-blush.vercel.app/api/movie/add", {
         title: inputs.title,
         rating: inputs.rating,
         description: inputs.description,
@@ -58,7 +56,6 @@ const AddMovie = () => {
           width={"70%"}
         >
           <Typography
-          className={classes.font}
             fontWeight={"bold"}
             padding={3}
             color="grey"
@@ -67,32 +64,32 @@ const AddMovie = () => {
           >
             Post Your Movie
           </Typography>
-          <InputLabel className={classes.font} sx={labelStyle}> Movie Title</InputLabel>
-          <TextField  className={classes.font}
+          <InputLabel  sx={labelStyle}> Movie Title</InputLabel>
+          <TextField  
             name="title"
             onChange={handleChange}
             value={inputs.title}
             margin="normal"
             variant="outlined"
           />
-          <InputLabel  className={classes.font} sx={labelStyle}>Rating</InputLabel>
-          <TextField  className={classes.font}
+          <InputLabel sx={labelStyle}>Rating</InputLabel>
+          <TextField  
             name="rating"
             onChange={handleChange}
             value={inputs.rating}
             margin="normal"
             variant="outlined"
           />
-          <InputLabel  className={classes.font} sx={labelStyle}>Description</InputLabel>
-          <TextField  className={classes.font}
+          <InputLabel sx={labelStyle}>Description</InputLabel>
+          <TextField  
             name="description"
             onChange={handleChange}
             value={inputs.description}
             margin="normal"
             variant="outlined"
           />
-          <InputLabel  className={classes.font} sx={labelStyle}>ImageURL</InputLabel>
-          <TextField  className={classes.font}
+          <InputLabel sx={labelStyle}>ImageURL</InputLabel>
+          <TextField 
             name="imageURL"
             onChange={handleChange}
             value={inputs.imageURL}

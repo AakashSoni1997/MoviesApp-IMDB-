@@ -38,7 +38,7 @@ if(localStorage.getItem("userId")){
           ) : (
             <>
               <Route path="/movies/add" element={<AddMovie />} />
-              <Route path="/movies" element={<Movies />} />
+              <Route path="/movies" element={<Movies/>} />
               <Route path="/mymovies" element={<UserMovie />} />
               <Route path="/mymovies/:id" element={<MovieDetail />} />
               {""}

@@ -9,7 +9,7 @@ const UserMovie = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/movie/user/${id}`)
+      .get(`https://server-pi-blush.vercel.app/api/movie/user/${id}`)
       .catch((err) => {
         console.log(err);
       });
