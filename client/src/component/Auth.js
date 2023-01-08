@@ -9,21 +9,24 @@ import { useNavigate } from "react-router-dom";
 const Auth = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [inputs, setInputs] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  // const [inputs, setInputs] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  // });
+  const [inputs, setInputs] = useState({})
   const [isSignup, setIsSignup] = useState(false);
 
   const handleChange = (e) => {
-    setInputs((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
+    const {name,value}=e.target;
+    // setInputs((prevState) => ({
+    //   ...prevState,
+    //   [e.target.name]: e.target.value,
+    // }));
+    setInputs({...inputs,[name]:value})
   };
 
-  const sendRequest = async (type = "login") => {
+  const  sendRequest = async (type = "login") => {
     const res = await axios
       .post(`https://server-pi-blush.vercel.app/api/user/${type}`, {
         name: inputs.name,
@@ -38,8 +41,9 @@ const Auth = () => {
   };
 
   const handleSubmit = (e) => {
+  console.log("stateeeeeeeeeeeee213",state);
+
     e.preventDefault();
-    console.log(inputs);
     if (isSignup) {
       sendRequest("signup")
         .then((data) => localStorage.setItem("userId", data.user._id))
