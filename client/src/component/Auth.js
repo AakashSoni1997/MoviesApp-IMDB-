@@ -9,20 +9,10 @@ import { useNavigate } from "react-router-dom";
 const Auth = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const [inputs, setInputs] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  // });
   const [inputs, setInputs] = useState({})
   const [isSignup, setIsSignup] = useState(false);
 
-  const handleChange = (e) => {
-    const {name,value}=e.target;
-    // setInputs((prevState) => ({
-    //   ...prevState,
-    //   [e.target.name]: e.target.value,
-    // }));
+  const handleChange = (name,value) => {
     setInputs({...inputs,[name]:value})
   };
 
@@ -41,7 +31,7 @@ const Auth = () => {
   };
 
   const handleSubmit = (e) => {
-  console.log("stateeeeeeeeeeeee213",state);
+  console.log("stateeeeeeeeeeeee213",inputs);
 
     e.preventDefault();
     if (isSignup) {
@@ -80,7 +70,7 @@ const Auth = () => {
           {isSignup && (
             <TextField
               name="name"
-              onChange={handleChange}
+              onChange={({target:{name,value}})=>handleChange(name,value)}
               value={inputs.name}
               placeholder="Name"
               margin="normal"
@@ -88,7 +78,7 @@ const Auth = () => {
           )}{" "}
           <TextField
             name="email"
-            onChange={handleChange}
+            onChange={(event)=>handleChange(event.target.name,event.target.value)}
             value={inputs.email}
             type={"email"}
             placeholder="Email"
@@ -96,7 +86,7 @@ const Auth = () => {
           />
           <TextField
             name="password"
-            onChange={handleChange}
+            onChange={(event)=>handleChange(event.target.name,event.target.value)}
             value={inputs.password}
             type={"password"}
             placeholder="password"
